@@ -2,9 +2,8 @@ name: Deploy to Render.com
 
 on:
   pull_request:
-    paths:
-    - 'calculator/**'
-    - '.github/workflows/calculator.yml'
+    branches:
+      - calculator
 
 jobs:
   deploy:
@@ -24,6 +23,7 @@ jobs:
 
       - name: Build Spring Boot application
         run: |
+          cd calculator
           mvn clean install  # Adjust the build command as needed
 
       - name: Install Docker
