@@ -28,8 +28,17 @@ jobs:
 
       - name: Install Docker
         run: |
-          sudo apt-get update
-          sudo apt-get install -y docker.io
+          # Remove any previously installed Docker versions
+          sudo apt-get remove -y docker docker-engine docker.io containerd runc
+
+          # Install Docker using official Docker script
+          curl -fsSL https://get.docker.com | sh
+
+          # Add the GitHub Actions runner user to the docker group
+          sudo usermod -aG docker $USER
+
+          # Restart Docker service
+          sudo service docker restart
 
       - name: Log in to Docker Hub
         run: |
