@@ -3,7 +3,7 @@ name: Deploy to Render.com
 on:
   pull_request:
     branches:
-      - calculator
+      - develop
 
 jobs:
   deploy:
