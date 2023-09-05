@@ -2,8 +2,9 @@ name: Deploy to Render.com
 
 on:
   pull_request:
-    branches:
-      - develop  # Replace with the branch you want to trigger deployments from
+    paths:
+   - 'calculator/**'
+   - '.github/workflows/calculator.yml'
 
 jobs:
   deploy:
