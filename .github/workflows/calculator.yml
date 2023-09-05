@@ -47,7 +47,7 @@ jobs:
       - name: Build Docker image
         working-directory: calculator
         run: |
-          docker build -t calculator .
+          docker build -t calculator -f Dockerfile.txt .
         
       - name: Tag Docker image
         run: |
