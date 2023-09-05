@@ -1,11 +1,12 @@
-FROM maven:3.9.2-eclipse-temurin-17-alpine as builder
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:11-jre-slim
 
-COPY ./src src/
-COPY ./pom.xml pom.xml
+# Set the working directory in the container
+WORKDIR /app
 
-RUN mvn clean install -DskipTests
+# Copy the Spring Boot application JAR file into the container at the specified location
+COPY target/calculator-0.0.1-SNAPSHOT.jar /app/
 
-FROM eclipse-temurin:11-jre-alpine
-COPY --from=builder target/*.jar app.jar
-EXPOSE 8080
-CMD ["java","-jar","app.jar"]
+# Specify the command to run your Spring Boot application when the container starts
+CMD ["java", "-jar", "calculator-0.0.1-SNAPSHOT.jar"]
+
