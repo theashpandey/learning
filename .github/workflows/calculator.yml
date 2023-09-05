@@ -3,8 +3,8 @@ name: Deploy to Render.com
 on:
   pull_request:
     paths:
-   - 'calculator/**'
-   - '.github/workflows/calculator.yml'
+    - 'calculator/**'
+    - '.github/workflows/calculator.yml'
 
 jobs:
   deploy:
