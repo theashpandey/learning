@@ -51,11 +51,11 @@ jobs:
         
       - name: Tag Docker image
         run: |
-          docker tag calculator renderapp/calculator:latest
+          docker tag calculator theashpandey/calculator:latest
 
       - name: Push Docker image to Render.com
         run: |
-          docker push renderapp/calculator:latest
+          docker push theashpandey/calculator:latest
 
       - name: Deploy to Render.com
         run: |
