@@ -59,6 +59,6 @@ jobs:
 
       - name: Deploy to Render.com
         run: |
-          curl -X POST "https://api.render.com/v1/services/testing/deploys" \
+          curl -X POST "https://api.render.com/v1/services/https://api.render.com/deploy/srv-cjrn1v8jbais73aucbq0?key=hhgUYoauc4U/deploys" \
             -H "Authorization: Bearer rnd_ufp75WMgYxd1RuwdVEoa5q6aU0Ut"
 
