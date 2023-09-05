@@ -1,19 +1,50 @@
-name: calculator
+name: Deploy to Render.com
 
 on:
-  push:
-    branches: calculator
+  pull_request:
+    branches:
+      - calculator  # Replace with the branch you want to trigger deployments from
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.8.8
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
-        heroku_app_name: ${{secrets.HEROKU_APP}}
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Use the desired Java version
+
+      - name: Build Spring Boot application
+        run: |
+          ./mvnw clean package  # Adjust the build command as needed
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+
+      - name: Log in to Docker Hub
+        run: |
+          docker login -u theashpandey -p Akp@9145826  # Use your Docker Hub username and password
+
+      - name: Build Docker image
+        run: |
+          docker build -t calculator .
+        
+      - name: Tag Docker image
+        run: |
+          docker tag calculator renderapp/calculator:latest
+
+      - name: Push Docker image to Render.com
+        run: |
+          docker push renderapp/calculator:latest
+
+      - name: Deploy to Render.com
+        run: |
+          curl -X POST "https://api.render.com/v1/services/SERVICE_ID/deploys" \
+            -H "Authorization: Bearer rnd_ufp75WMgYxd1RuwdVEoa5q6aU0Ut"
+
