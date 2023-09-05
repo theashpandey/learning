@@ -45,6 +45,7 @@ jobs:
           docker login -u theashpandey -p Akp@9145826  # Use your Docker Hub username and password
 
       - name: Build Docker image
+        working-directory: calculator
         run: |
           docker build -t calculator .
         
