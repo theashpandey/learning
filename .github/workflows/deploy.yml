@@ -15,6 +15,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Use the desired Java version
+          distribution: 'adopt'
+          java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
+          architecture: x64 # (x64 or x86) - defaults to x64
+
+      - name: Build Spring Boot application
+        run: |
+          cd calculator
+          mvn clean install  # Adjust the build command as needed
+
       - name: Install Docker
         run: |
           # Remove any previously installed Docker versions
@@ -31,7 +44,7 @@ jobs:
 
       - name: Log in to Docker Hub
         run: |
-          docker login -u theashpandey -p Akp@9145826
+          docker login -u theashpandey -p Akp@9145826  # Use your Docker Hub username and password
 
       - name: Build Docker image
         working-directory: calculator
@@ -50,3 +63,4 @@ jobs:
         run: |
           curl -X POST "https://api.render.com/v1/services/srv-cjrnpugjbais73e396i0/deploys" \
             -H "Authorization: Bearer rnd_ufp75WMgYxd1RuwdVEoa5q6aU0Ut"
+
