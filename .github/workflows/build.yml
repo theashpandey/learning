@@ -8,7 +8,7 @@ on:
       - opened
 
 jobs:
-  Job for building:
+  Job-for-building:
     runs-on: ubuntu-latest
 
     steps:
