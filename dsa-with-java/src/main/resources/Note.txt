@@ -1,0 +1,12 @@
+1. Due to contiguous memory locations, accessing data becomes faster because the CPU can effectively use caching.
+
+Reasoning:
+Contiguous Memory: Arrays are stored in contiguous memory locations, which means that when you access one element, adjacent elements are likely to be loaded into the CPU cache as well. This is because modern CPUs fetch and cache blocks of memory to optimize access times.
+Cache Efficiency: The CPU cache stores frequently accessed data to reduce the time it takes to retrieve it from slower main memory. When data is stored contiguously, sequential accesses benefit from cache locality, which speeds up access times and improves overall performance.
+
+2. When dealing with billions of data points, iterative binary search is preferred to avoid stack overflow issues that can occur with recursive methods.
+
+Reasoning:
+Iterative Binary Search: This method uses a loop to perform the search, so it does not involve function calls that add to the call stack. As a result, it does not risk a stack overflow, making it more suitable for very large datasets.
+Recursive Binary Search: While recursive methods are straightforward, each recursive call adds a new frame to the call stack. For very large datasets, the depth of recursion can become substantial, leading to the possibility of stack overflow if the recursion depth exceeds the maximum stack size allowed by the system.
+

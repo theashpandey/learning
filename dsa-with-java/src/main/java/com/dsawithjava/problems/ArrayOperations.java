@@ -7,6 +7,7 @@ public class ArrayOperations {
   public static void main(String[] args) {
     // insertElementInKthPosition();
     // removeElementFromKthPosition();
+   //  searchElementWithUnsortedArray();
   }
 
   public static void insertElementInKthPosition() {
@@ -41,5 +42,24 @@ public class ArrayOperations {
       System.out.println(e);
     }
   }
+  
+  public static void searchElementWithUnsortedArray() {
+    int arr[]= {3,4,5,1,4};
+    int element =4;
+    int left =0, right=arr.length-1;
+    
+    while (left<right) {
+      if(arr[left]==element) {
+        System.out.println(left+1);
+      }
+      if(arr[right]==element) {
+        System.out.println(right+1);
+      }
+      left++;
+      right--;
+    }
+  }
 
+  
+  
 }
