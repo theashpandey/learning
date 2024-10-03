@@ -7,7 +7,7 @@ public class ArrayOperations {
   public static void main(String[] args) {
     // insertElementInKthPosition();
     // removeElementFromKthPosition();
-   //  searchElementWithUnsortedArray();
+   searchElementWithUnsortedArray();
   }
 
   public static void insertElementInKthPosition() {
@@ -45,7 +45,7 @@ public class ArrayOperations {
   
   public static void searchElementWithUnsortedArray() {
     int arr[]= {3,4,5,1,4};
-    int element =4;
+    int element =1;
     int left =0, right=arr.length-1;
     
     while (left<right) {
